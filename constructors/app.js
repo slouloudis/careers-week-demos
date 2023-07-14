@@ -40,50 +40,56 @@
 
 //   myObj.property4.property4PROPERTY2.property4PROPERTY2Property1()
 
-let player = {
-    health: 100,
-    model: '', // some sort of 3d file
-    attack: (target) => {
-        let atkDMG = getRandomNum()
-        target.health = target.health - atkDMG
-        console.log(`The player attacks the ${target.type}. They deal ${atkDMG} dmg. The vampire has ${target.health > 0 ? target.health : '0'} hp left!`);  
-    },
-    playerDeath: false 
-}
+// let player = {
+//     health: 100,
+//     model: '', // some sort of 3d file
+//     attack: target => {
+//         let atkDMG = getRandomNum()
+//         target.health = target.health - atkDMG
+//         console.log(`The player attacks the ${target.type}. They deal ${atkDMG} dmg. The vampire has ${target.health > 0 ? target.health : '0'} hp left!`);  
+//     },
+//     playerDeath: false 
+// }
 
 
-function getRandomNum () { Math.floor(Math.random() * 100)}
+// function getRandomNum() {return Math.floor(Math.random() * 100)}
 
-function Enemies(type, health, model) {
-    this.type = type;
-    this.health = health;
-    this.model = model;
-}
+// let listOfEnemies = []
 
-// turn the below into an arrow function, and show how 'this' stops working! 
+// function Enemies(type, health, model) {
+//     this.type = type;
+//     this.health = health;
+//     this.model = model;
+//     listOfEnemies.push(this)
+// }
 
-Enemies.prototype.attack = function () {
-    this.attackDMG = getRandomNum()
+// // turn the below into an arrow function, and show how 'this' stops working! 
 
-    console.log(`${this.type} attacks! They deal ${this.attackDMG} dmg.`)
-    player.health = player.health - this.attackDMG;
-    if (player.health <= 0) {return player.playerDeath = true};
-     console.log(`The player has ${player.health} health left`)
- }
+// Enemies.prototype.attack = function () {
+//     this.attackDMG = getRandomNum()
+//     console.log(this.attackDMG)
+//     console.log(`${this.type} attacks! They deal ${this.attackDMG} dmg.`)
+//     player.health = player.health - this.attackDMG;
+//     if (player.health <= 0) {return player.playerDeath = true};
+//      console.log(`The player has ${player.health} health left`)
+//  }
  
-function playGame() {
-    let arrTurns = [1,2,3] 
-    for (let i = arrTurns.length; i >= 0; i--) {
-        vampire.attack();
-        if (player.playerDeath == true) { console.log(`The player has died!`); break; }
-        player.attack(vampire)
-        if (0 >= vampire.health) {console.log(`The player has defeated the vampire!`); break;}
-    }
-}
+// function playGame() {
+//     console.log('forloop running')
+//     let arrTurns = [1,2] 
+//     for (let i = 0; i < arrTurns.length; i++) {
+//         listOfEnemies[i].attack();
+//         if (player.playerDeath == true) { console.log(`The player has died!`); break; }
+//         player.attack(listOfEnemies[i])
+//         if (0 >= listOfEnemies[i].health) {console.log(`The player has defeated the vampire!`); break;}
+//     }
+// }
 
-let vampire = new Enemies('Vampire', 100, 'somestring') 
+// let vampire = new Enemies('Vampire', 100, 'somestring') 
+// let pirate = new Enemies('Pirate', 150, 'somestring') 
+// console.log(listOfEnemies)
 
-playGame();
+// playGame();
 
 // constructors 
 
@@ -94,3 +100,26 @@ playGame();
 
 // let elf = new Object()
 // console.log(elf);
+
+let allShirts = [];
+
+function tshirtConstructor(price,color) {
+    this.price = price;
+    this.color = color;
+    this.type = 't-shirt';
+    allShirts.push(this)
+
+}
+
+let fineRed = new tshirtConstructor(14.99, 'red')
+new tshirtConstructor(50.00, 'better red')
+console.log(tshirtConstructor.prototype)
+
+
+// function BasicReturn() {
+//     let string = 'string'
+//     return string
+// }
+
+// let tester = new BasicReturn()
+// console.log(tester)
